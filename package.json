@@ -1,0 +1,12 @@
+{
+  "name": "ux-angularjs-datagrid_windowscroll-scrollhistory",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "npm start"
+  },
+  "devDependencies": {
+    "angular": "^1.5.6",
+    "express": "^4.13.4",    
+    "ux-angularjs-datagrid": "^1.5.2"
+  }
+}

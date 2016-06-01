@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>ux-angularjs-datagrid_windowscroll-scrollhistory</title>
+    <style>
+        .toggle {
+            position: fixed;
+
+        }
+
+        .row {
+            height: 16px;
+            border-bottom: 1px solid #000000;
+        }
+    </style>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/ux-angularjs-datagrid/build/latest/angular-ux-datagrid.js"></script>
+    <script src="node_modules/ux-angularjs-datagrid/build/latest/addons/ux-datagrid-scrollHistory.js"></script>
+    <script src="node_modules/ux-angularjs-datagrid/build/latest/addons/ux-datagrid-windowScroll.js"></script>
+    <script src="node_modules/ux-angularjs-datagrid/build/latest/addons/ux-datagrid-gridLogger.js"></script>
+
+    <script>
+
+        angular
+                .module("app", ['ng', 'ux'])
+                .controller('controller', function ($scope) {
+                    var i = 0;
+                    var records = 100;
+
+                    $scope.items = [];
+                    while (i < records) {
+                        $scope.items.push({id: i});
+                        i += 1;
+                    }
+
+                    $scope.visible = true;
+                    $scope.toggleVisibility = function () {
+                        $scope.visible = !$scope.visible;
+                    }
+                });
+
+    </script>
+</head>
+<body ng-controller="controller">
+
+<button class="toggle" ng-click="toggleVisibility()">Toggle</button>
+
+<div ng-if="visible"
+     class="ux-datagrid"
+     ux-datagrid="items"
+     addons="windowScroll scrollHistory gridLogger"
+     options="{debug:{all:1}}">
+
+    <script type="template/html" template-item="item">
+        <div class="row"><span ng-bind="item.id"></span></div>
+    </script>
+
+</div>
+
+</body>
+</html>
