@@ -1,1 +1,1 @@
-# ux-angularjs-datagrid_windowscroll-scrollhistory
+just `npm install` and open your browser on localhost:4000
